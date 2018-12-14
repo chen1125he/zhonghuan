@@ -42,6 +42,7 @@ gem 'mina-multistage', '~> 1.0', require: false
 gem 'mina-sidekiq', '~> 0.3.1', require: false
 gem 'mina-logs', '>= 0.1.0', require: false
 gem 'lograge'
+gem 'enumerize'
 group :development do
   gem 'rails_apps_testing'
 end
