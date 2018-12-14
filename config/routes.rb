@@ -1,14 +1,10 @@
+require 'sidekiq/web'
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  namespace :api do
-    namespace :admin do
-      post 'login', to: 'sessions#create'
-      delete 'logout', to: 'sessions#destroy', as: :logout
+  # writer your routes here
 
-      resources :pages, only: [:index, :show, :create, :update, :destroy]
-      resources :sliders, only: [:index, :show, :create, :update, :destroy]
-      resources :informations, only: [:index, :show, :create, :update, :destroy]
-    end
-  end
+  mount Sidekiq::Web => '/sidekiq'
+  mount StatusPage::Engine => '/'
+  #mount ActionCable.server => '/cable'
+  root to: 'visitors#index'
 end
