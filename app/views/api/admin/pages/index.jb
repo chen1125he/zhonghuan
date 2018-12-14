@@ -1,0 +1,11 @@
+{
+  pages: render(partial: 'api/admin/pages/page', collection: @pages, as: :page),
+  page: {
+    total_count: @pages.total_count,
+    total_pages: @pages.total_pages,
+    prev_page: @pages.prev_page,
+    next_page: @pages.next_page,
+    current_page: @pages.current_page,
+    per: params[:per] || @pages.limit_value
+  }
+}

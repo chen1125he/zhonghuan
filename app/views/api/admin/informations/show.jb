@@ -1,0 +1,1 @@
+render('api/admin/informations/information', information: @information)

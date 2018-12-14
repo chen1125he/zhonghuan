@@ -1,0 +1,9 @@
+{
+  title: information.title,
+  image: render('api/admin/images/image', image: information.image),
+  link_type: information.link_type,
+  link: information.link,
+  desc: information.desc,
+  public_at: information.public_at&.strftime('%Y/%m/%d %H:%M:%S'),
+  position: information.position
+}

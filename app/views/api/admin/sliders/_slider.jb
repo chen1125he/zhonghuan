@@ -1,0 +1,6 @@
+{
+  name: slider.name,
+  image: render('api/admin/images/image', image: slider.image),
+  link_type: slider.link_type,
+  link: slider.link
+}

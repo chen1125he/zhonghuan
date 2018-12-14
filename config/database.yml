@@ -1,0 +1,29 @@
+development:
+  adapter:  postgresql
+  host:     localhost
+  encoding: unicode
+  database: zhonghuan_development
+  pool:     5
+  username: postgres
+  password: chen5200han
+  template: template0
+
+test:
+  adapter:  postgresql
+  host:     localhost
+  encoding: unicode
+  database: zhonghuan_test
+  pool:     5
+  username: postgres
+  password: chen5200han
+  template: template0
+
+production:
+  adapter:  postgresql
+  host:     localhost
+  encoding: unicode
+  database: zhonghuan_production
+  pool:     5
+  username: postgres
+  password: chen5200han
+  template: template0

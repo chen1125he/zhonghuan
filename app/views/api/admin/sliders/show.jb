@@ -1,0 +1,1 @@
+render('api/admin/sliders/slider', slider: @slider)

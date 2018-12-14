@@ -1,0 +1,7 @@
+return unless image.present?
+
+{
+  original: image.url,
+  thumb: image.url(:thumb),
+  medium: image.url(:medium)
+}

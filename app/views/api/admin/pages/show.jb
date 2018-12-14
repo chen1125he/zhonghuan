@@ -1,0 +1,1 @@
+render('api/admin/pages/page', page: @page)

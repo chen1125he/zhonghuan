@@ -1,0 +1,10 @@
+{
+  id: page_item.id,
+  page_id: page_item.id,
+  item_type: page_item.item_type,
+  link_type: page_item.link_type,
+  link: page_item.link,
+  content: page_item.content,
+  position: page_item.position,
+  image: render('api/admin/images/image', image: page_item.image)
+}
