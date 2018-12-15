@@ -12,9 +12,10 @@ require 'mina/logs'
 
 set :shared_paths, ['config/database.yml', 'config/application.yml', 'log', 'public/uploads']
 set :puma_config, ->{ "#{deploy_to}/#{current_path}/config/puma.rb" }
+set_default :rvm_path, '/usr/local/rvm'
 
 task :environment do
-  invoke :'rbenv:load'
+  invoke :'rvm:use[ruby-2.3.1@default]'
 end
 
 task :setup => :environment do
