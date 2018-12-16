@@ -1,5 +1,5 @@
 set :domain, '129.204.48.120'
-set :deploy_to, '/home/ruby/zhonghuan'
+set :deploy_to, '/data/www/zhonghuan'
 set :repository,  'git@github.com:chen1125he/zhonghuan.git'
 set :branch, 'master'
 set :user, 'ruby'
