@@ -38,9 +38,9 @@ gem 'sinatra', github: 'sinatra', require: false
 gem 'kaminari', github: 'amatsuda/kaminari'
 gem 'rails-i18n', '~> 5.0.0'
 gem 'mina-puma', require: false
-gem 'mina-multistage', '~> 1.0', require: false
-gem 'mina-sidekiq', '~> 0.3.1', require: false
-gem 'mina-logs', '>= 0.1.0', require: false
+gem 'mina-multistage', require: false
+gem 'mina-sidekiq', require: false
+gem 'mina-logs', require: false
 gem 'lograge'
 gem 'enumerize'
 gem 'paperclip'

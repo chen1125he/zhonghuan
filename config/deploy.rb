@@ -1,54 +1,55 @@
 set :stages, %w(production)
 set :default_stage, 'production'
 
-require 'mina/multistage'
 require 'mina/bundler'
 require 'mina/rails'
 require 'mina/git'
-require 'mina/rvm'
+require 'mina/rbenv'
 require 'mina/puma'
 require "mina_sidekiq/tasks"
-require 'mina/logs'
+require 'mina/multistage'
 
-set :shared_paths, ['config/database.yml', 'config/application.yml', 'log', 'public/uploads']
-set :puma_config, ->{ "#{deploy_to}/#{current_path}/config/puma.rb" }
-set :rvm_path, '/usr/local/rvm/scripts/rvm'
+set :shared_dirs, fetch(:shared_dirs, []).push('log', 'public/uploads', 'app/wxpays/uploads')
+set :shared_files, fetch(:shared_files, []).push('config/application.yml', 'config/database.yml', 'config/puma.rb')
+set :sidekiq_pid, ->{ "#{fetch(:shared_path)}/tmp/pids/sidekiq.pid" }
 
-task :environment do
-  invoke :'rvm:use[ruby-2.3.1@default]'
+task :remote_environment do
+  invoke :'rbenv:load'
 end
 
-task :setup => :environment do
-  queue! %[mkdir -p "#{deploy_to}/shared/tmp/sockets"]
-  queue! %[chmod g+rx,u+rwx "#{deploy_to}/shared/tmp/sockets"]
+task :setup do
+  command %[mkdir -p "#{fetch(:shared_path)}/tmp/sockets"]
+  command %[chmod g+rx,u+rwx "#{fetch(:shared_path)}/tmp/sockets"]
 
-  queue! %[mkdir -p "#{deploy_to}/shared/tmp/pids"]
-  queue! %[chmod g+rx,u+rwx "#{deploy_to}/shared/tmp/pids"]
+  command %[mkdir -p "#{fetch(:shared_path)}/tmp/pids"]
+  command %[chmod g+rx,u+rwx "#{fetch(:shared_path)}/tmp/pids"]
 
-  queue! %[mkdir -p "#{deploy_to}/#{shared_path}/log"]
-  queue! %[chmod g+rx,u+rwx "#{deploy_to}/#{shared_path}/log"]
+  command %[mkdir -p "#{fetch(:shared_path)}/log"]
+  command %[chmod g+rx,u+rwx "#{fetch(:shared_path)}/log"]
 
-  queue! %[mkdir -p "#{deploy_to}/#{shared_path}/public/uploads"]
-  queue! %[chmod g+rx,u+rwx "#{deploy_to}/#{shared_path}/public/uploads"]
+  command %[mkdir -p "#{fetch(:shared_path)}/public/uploads"]
+  command %[chmod g+rx,u+rwx "#{fetch(:shared_path)}/public/uploads"]
 
-  queue! %[mkdir -p "#{deploy_to}/#{shared_path}/config"]
-  queue! %[chmod g+rx,u+rwx "#{deploy_to}/#{shared_path}/config"]
+  command %[mkdir -p "#{fetch(:shared_path)}/config"]
+  command %[chmod g+rx,u+rwx "#{fetch(:shared_path)}/config"]
 
-  queue! %[touch "#{deploy_to}/#{shared_path}/config/application.yml"]
-  queue  %[echo "-----> Be sure to edit '#{deploy_to}/#{shared_path}/config/application.yml'"]
+  command %[touch "#{fetch(:shared_path)}/config/application.yml"]
+  command %[echo "-----> Be sure to edit '#{fetch(:shared_path)}/config/application.yml'"]
 
-  queue! %[touch "#{deploy_to}/#{shared_path}/config/database.yml"]
-  queue  %[echo "-----> Be sure to edit '#{deploy_to}/#{shared_path}/config/database.yml'"]
+  command %[touch "#{fetch(:shared_path)}/config/database.yml"]
+  command %[echo "-----> Be sure to edit '#{fetch(:shared_path)}/config/database.yml'"]
+
+  command %[touch "#{fetch(:shared_path)}/config/puma.rb"]
+  command %[echo "-----> Be sure to edit '#{fetch(:shared_path)}/config/puma.rb'"]
 end
 
 desc "Deploys the current version to the server."
-task :deploy => :environment do
-  queue  %[echo "-----> Server: #{domain}"]
-  queue  %[echo "-----> Path: #{deploy_to}"]
-  queue  %[echo "-----> Branch: #{branch}"]
+task :deploy do
+  command %[echo "-----> Server: #{fetch(:domain)}"]
+  command %[echo "-----> Path: #{fetch(:deploy_to)}"]
+  command %[echo "-----> Branch: #{fetch(:branch)}"]
 
   deploy do
-    invoke :'sidekiq:quiet'
     invoke :'git:clone'
     invoke :'deploy:link_shared_paths'
     invoke :'bundle:install'
@@ -56,8 +57,10 @@ task :deploy => :environment do
     invoke :'rails:assets_precompile'
     invoke :'deploy:cleanup'
 
-    to :launch do
-      invoke :'puma:restart'
+    on :launch do
+      invoke :'rbenv:load'
+      invoke :'sidekiq:quiet'
+      invoke :'puma:hard_restart'
       invoke :'sidekiq:restart'
     end
   end
@@ -65,9 +68,9 @@ end
 
 desc "Deploys the current version to the server."
 task :first_deploy => :environment do
-  queue  %[echo "-----> Server: #{domain}"]
-  queue  %[echo "-----> Path: #{deploy_to}"]
-  queue  %[echo "-----> Branch: #{branch}"]
+  command %[echo "-----> Server: #{fetch(:domain)}"]
+  command %[echo "-----> Path: #{fetch(:deploy_to)}"]
+  command %[echo "-----> Branch: #{fetch(:branch)}"]
 
   deploy do
     invoke :'git:clone'
@@ -75,7 +78,8 @@ task :first_deploy => :environment do
     invoke :'bundle:install'
     invoke :'deploy:cleanup'
 
-    to :launch do
+    on :launch do
+      invoke :'rbenv:load'
       invoke :'rails:db_create'
     end
   end
