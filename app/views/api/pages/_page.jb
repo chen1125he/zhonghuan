@@ -1,0 +1,5 @@
+{
+  id: page.id,
+  name: page.name,
+  page_items: render(partial: 'api/page_items/page_item', collection: page.page_items, as: :page_item)
+}

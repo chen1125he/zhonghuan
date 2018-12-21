@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181209054141) do
+ActiveRecord::Schema.define(version: 20181220133751) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,72 @@ ActiveRecord::Schema.define(version: 20181209054141) do
     t.string   "password_digest"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+  end
+
+  create_table "building_description_details", force: :cascade do |t|
+    t.integer  "building_description_id"
+    t.string   "title"
+    t.text     "desc"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.index ["building_description_id"], name: "index_building_description_details_on_building_description_id", using: :btree
+  end
+
+  create_table "building_descriptions", force: :cascade do |t|
+    t.integer  "building_id"
+    t.text     "sub_desc"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["building_id"], name: "index_building_descriptions_on_building_id", using: :btree
+  end
+
+  create_table "building_display_pictures", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "building_displays", force: :cascade do |t|
+    t.integer  "building_id"
+    t.string   "name"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["building_id"], name: "index_building_displays_on_building_id", using: :btree
+  end
+
+  create_table "buildings", force: :cascade do |t|
+    t.integer  "price_per_sqm"
+    t.string   "name"
+    t.string   "tags",                default: [],              array: true
+    t.string   "address"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.string   "developer"
+    t.string   "property_company"
+    t.date     "opening_date"
+    t.date     "delivery_date"
+    t.string   "property_type"
+    t.string   "property_year"
+    t.integer  "car_position_count"
+    t.string   "decoration_standard"
+    t.string   "green_rate"
+    t.string   "plot_ratio"
+    t.string   "property_fee_desc"
+    t.integer  "base_count"
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+  end
+
+  create_table "images", force: :cascade do |t|
+    t.string   "owner_type"
+    t.integer  "owner_id"
+    t.string   "file_file_name"
+    t.string   "file_content_type"
+    t.bigint   "file_file_size"
+    t.datetime "file_updated_at"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.index ["owner_type", "owner_id"], name: "index_images_on_owner_type_and_owner_id", using: :btree
   end
 
   create_table "information", id: :bigserial, force: :cascade do |t|

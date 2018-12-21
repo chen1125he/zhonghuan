@@ -1,6 +1,6 @@
 {
   title: information.title,
-  image: render('api/admin/images/image', image: information.image),
+  image: render('api/images/image', image: information.image),
   link_type: information.link_type,
   link: information.link,
   desc: information.desc,

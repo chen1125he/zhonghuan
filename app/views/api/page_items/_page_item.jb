@@ -6,5 +6,5 @@
   link: page_item.link,
   content: page_item.content,
   position: page_item.position,
-  image: render('api/admin/images/image', image: page_item.image)
+  image: render('api/images/image', image: page_item.image)
 }

@@ -3,11 +3,13 @@ module APIRenderingHelper
 
   def render_ok(data = nil)
     data ||= {}
+    data[:retcode] = 1
     render json: data, status: :ok
   end
 
   def render_created(data = nil)
     data ||= {}
+    data[:retcode] = 1
     render json: data, status: :created
   end
 
@@ -17,17 +19,17 @@ module APIRenderingHelper
 
   def render_unauthorized(message = nil)
     message ||= '你还未登录'
-    render json: { message: message }, status: :unauthorized
+    render json: { message: message, retcode: 0 }, status: :unauthorized
   end
 
   def render_forbidden(message = nil)
     message ||= '你无法进行该操作'
-    render json: { message: message }, status: :forbidden
+    render json: { message: message, retcode: 0 }, status: :forbidden
   end
 
   def render_not_found(message = nil)
     message ||= '你要操作的资源未找到'
-    render json: { message: message }, status: :not_found
+    render json: { message: message, retcode: 0 }, status: :not_found
   end
 
   def render_unprocessable_entity(message = nil, record = nil)
@@ -43,6 +45,6 @@ module APIRenderingHelper
         }
       end
     end
-    render json: { message: message, errors: errors }, status: :unprocessable_entity
+    render json: { message: message, errors: errors, retcode: 0 }, status: :unprocessable_entity
   end
 end
