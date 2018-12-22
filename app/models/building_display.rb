@@ -15,7 +15,7 @@
 
 class BuildingDisplay < ApplicationRecord
   belongs_to :building, optional: true
-  has_many :building_display_pictures
+  has_many :building_display_pictures, dependent: :destroy
 
   accepts_nested_attributes_for :building_display_pictures, allow_destroy: true
 end

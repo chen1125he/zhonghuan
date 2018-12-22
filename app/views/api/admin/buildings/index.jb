@@ -1,0 +1,11 @@
+{
+  buildings: render(partial: 'api/buildings/building', collection: @buildings, as: :building),
+  page: {
+    total_count: @buildings.total_count,
+    total_pages: @buildings.total_pages,
+    prev_page: @buildings.prev_page,
+    next_page: @buildings.next_page,
+    current_page: @buildings.current_page,
+    per: params[:per] || @buildings.limit_value
+  }
+}

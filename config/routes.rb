@@ -10,10 +10,14 @@ Rails.application.routes.draw do
       resources :pages, only: [:index, :show, :create, :update, :destroy]
       resources :sliders, only: [:index, :show, :create, :update, :destroy]
       resources :informations, only: [:index, :show, :create, :update, :destroy]
+      resources :buildings, only: [:index, :show, :create, :update, :destroy]
+      resources :advisers, only: [:index, :show, :create, :update, :destroy]
     end
 
     resources :pages, only: [:index, :show]
     resources :sliders, only: [:index, :show]
     resources :informations, only: [:index, :show]
+    resources :buildings, only: [:index, :show]
+    resources :advisers, only: [:index, :show]
   end
 end

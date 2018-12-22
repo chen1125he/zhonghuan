@@ -1,0 +1,5 @@
+{
+  id: building_display.id,
+  name: building_display.name,
+  building_display_pictures: render(partial: 'api/building_display_pictures/building_display_picture', collection: building_display.building_display_pictures, as: :building_display_picture)
+}

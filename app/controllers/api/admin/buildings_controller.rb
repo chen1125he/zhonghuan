@@ -40,7 +40,6 @@ class API::Admin::BuildingsController < API::Admin::BaseController
     params.require(:building).permit(
       :price_per_sqm,
       :name,
-      :tags,
       :address,
       :latitude,
       :longitude,
@@ -56,6 +55,7 @@ class API::Admin::BuildingsController < API::Admin::BaseController
       :plot_ratio,
       :property_fee_desc,
       :base_count,
+      tags: [],
       cover_attributes: [:id, :file, :_destroy],
       building_displays_attributes: [
         :id,
@@ -65,11 +65,11 @@ class API::Admin::BuildingsController < API::Admin::BaseController
           :id,
           :name,
           :_destroy,
-          pictures: [:id, :file, :_destroy]
+          pictures_attributes: [:id, :file, :_destroy]
 
         ]
       ],
-      building_descriptions: [
+      building_descriptions_attributes: [
         :id,
         :sub_desc,
         :_destroy,

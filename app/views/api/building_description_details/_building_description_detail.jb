@@ -1,0 +1,5 @@
+{
+  id: building_description_detail.id,
+  title: building_description_detail.title,
+  desc: building_description_detail.desc
+}

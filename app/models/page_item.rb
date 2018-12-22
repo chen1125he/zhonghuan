@@ -2,19 +2,19 @@
 #
 # Table name: page_items
 #
-#  id                 :bigint(8)        not null, primary key
-#  page_id            :bigint(8)
-#  item_type          :string
-#  link_type          :string
-#  link               :string
-#  image_file_name    :string
-#  image_content_type :string
-#  image_file_size    :integer
-#  image_updated_at   :datetime
+#  id                 :integer          not null, primary key
 #  content            :text
+#  image_content_type :string
+#  image_file_name    :string
+#  image_file_size    :bigint(8)
+#  image_updated_at   :datetime
+#  item_type          :string
+#  link               :string
+#  link_type          :string
 #  position           :integer          default(0)
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null
+#  page_id            :integer
 #
 # Indexes
 #

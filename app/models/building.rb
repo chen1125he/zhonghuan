@@ -27,8 +27,11 @@
 
 class Building < ApplicationRecord
   has_one :cover, as: :owner, class_name: 'Image'
-  has_many :building_displays
-  has_many :building_descriptions
+  has_many :building_displays, dependent: :destroy
+  has_many :building_descriptions, dependent: :destroy
+
+  validates :name, presence: true
+  validates :cover, presence: true
 
   accepts_nested_attributes_for :cover, allow_destroy: true
   accepts_nested_attributes_for :building_displays, allow_destroy: true

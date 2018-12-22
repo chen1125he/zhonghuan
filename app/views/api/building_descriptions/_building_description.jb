@@ -1,0 +1,5 @@
+{
+  id: building_description.id,
+  sub_desc: building_description.sub_desc,
+  building_description_details: render(partial: 'api/building_description_details/building_description_detail', collection: building_description.building_description_details, as: :building_description_detail)
+}

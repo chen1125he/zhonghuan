@@ -145,6 +145,8 @@ GEM
       activesupport (>= 4.2.0)
     i18n (0.9.5)
       concurrent-ruby (~> 1.0)
+    jb (0.5.0)
+      multi_json
     jbuilder (2.8.0)
       activesupport (>= 4.2.0)
       multi_json (>= 1.2)
@@ -349,6 +351,7 @@ DEPENDENCIES
   figaro
   font-awesome-sass
   high_voltage!
+  jb
   jbuilder (~> 2.5)
   jquery-rails
   kaminari!

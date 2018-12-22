@@ -1,4 +1,5 @@
 {
+  id: slider.id
   name: slider.name,
   image: render('api/images/image', image: slider.image),
   link_type: slider.link_type,

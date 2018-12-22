@@ -2,14 +2,14 @@
 #
 # Table name: sliders
 #
-#  id                 :bigint(8)        not null, primary key
-#  name               :string
-#  link_type          :string
-#  link               :string
-#  image_file_name    :string
+#  id                 :integer          not null, primary key
 #  image_content_type :string
-#  image_file_size    :integer
+#  image_file_name    :string
+#  image_file_size    :bigint(8)
 #  image_updated_at   :datetime
+#  link               :string
+#  link_type          :string
+#  name               :string
 #  position           :integer          default(0)
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null

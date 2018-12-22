@@ -1,0 +1,5 @@
+{
+  id: building_display_picture.id,
+  name: building_display_picture.name,
+  pictures: render(partial: 'api/images/image', collection: building_display_picture.pictures.map(&:file), as: :image)
+}

@@ -15,7 +15,7 @@
 
 class BuildingDescription < ApplicationRecord
   belongs_to :building, optional: true
-  has_many :building_description_details
+  has_many :building_description_details, dependent: :destroy
 
   accepts_nested_attributes_for :building_description_details, allow_destroy: true
 end

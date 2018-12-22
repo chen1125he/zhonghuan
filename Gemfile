@@ -45,6 +45,7 @@ gem 'mina-logs', require: false
 gem 'lograge'
 gem 'enumerize'
 gem 'paperclip'
+gem 'jb'
 
 group :development do
   gem 'rails_apps_testing'

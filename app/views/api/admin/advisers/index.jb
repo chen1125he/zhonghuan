@@ -1,0 +1,11 @@
+{
+  advisers: render(partial: 'api/advisers/adviser', collection: @advisers, as: :adviser),
+  page: {
+    total_count: @advisers.total_count,
+    total_pages: @advisers.total_pages,
+    prev_page: @advisers.prev_page,
+    next_page: @advisers.next_page,
+    current_page: @advisers.current_page,
+    per: params[:per] || @advisers.limit_value
+  }
+}
