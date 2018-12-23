@@ -37,6 +37,15 @@ class API::Admin::InformationsController < API::Admin::BaseController
   end
 
   def information_params
-    params.require(:information).permit(:title, :image, :link_type, :link, :position, :desc, :public_at, :base_number)
+    params.require(:information).permit(
+      :title,
+      :link_type,
+      :link,
+      :position,
+      :desc,
+      :public_at,
+      :base_number,
+      image_attributes: [:id, :_destroy]
+    )
   end
 end

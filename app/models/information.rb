@@ -24,11 +24,20 @@ class Information < ApplicationRecord
 
   enumerize :link_type, in: %w(page article), default: :article
 
-  has_attached_file :image, styles: { medium: "300x300>", thumb: "100x100>" }
-  validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
+  # has_attached_file :image, styles: { medium: "300x300>", thumb: "100x100>" }
+  # validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
   validates :title, presence: true
   validates :link_type, presence: true
   validates :link, presence: true
   validates :public_at, presence: true
-  validates :image, attachment_presence: true
+  # validates :image, attachment_presence: true
+
+  has_one :image, as: :owner, class_name: 'Image', dependent: :destroy
+  accepts_nested_attributes_for :image, allow_destroy: true
+
+  def image_attributes=(attributes)
+    image = Image.find(attributes[:id])
+    self.image = image # Preferably finding posts should be scoped
+    super(attributes)
+  end
 end

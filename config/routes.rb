@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     namespace :admin do
       post 'login', to: 'sessions#create'
       get 'iflogin', to: 'sessions#show'
-      delete 'logout', to: 'sessions#destroy', as: :logout
+      delete 'logout', to: 'sessions#destroy'
 
       resources :pages, only: [:index, :show, :create, :update, :destroy]
       resources :sliders, only: [:index, :show, :create, :update, :destroy]
