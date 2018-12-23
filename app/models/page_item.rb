@@ -25,6 +25,7 @@ class PageItem < ApplicationRecord
   extend Enumerize
 
   belongs_to :page, optional: true
+  has_one :image, as: :owner, dependent: :destroy
 
   enumerize :item_type, in: %w(content image), default: :content
   enumerize :link_type, in: %w(none page article), default: :none
