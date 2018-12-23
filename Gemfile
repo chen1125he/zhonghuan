@@ -19,6 +19,7 @@ group :development do
   gem 'web-console'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'rack-cors', :require => 'rack/cors'
 end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 

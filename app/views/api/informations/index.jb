@@ -1,11 +1,14 @@
 {
-  informations: render(partial: 'api/informations/information', collection: @informations, as: :information),
-  page: {
-    total_count: @informations.total_count,
-    total_pages: @informations.total_pages,
-    prev_page: @informations.prev_page,
-    next_page: @informations.next_page,
-    current_page: @informations.current_page,
-    per: params[:per] || @informations.limit_value
-  }
+  result_rows: {
+    informations: render(partial: 'api/informations/information', collection: @informations, as: :information),
+    page: {
+      total_count: @informations.total_count,
+      total_pages: @informations.total_pages,
+      prev_page: @informations.prev_page,
+      next_page: @informations.next_page,
+      current_page: @informations.current_page,
+      per: params[:per] || @informations.limit_value
+    }
+  },
+  retcode: 0
 }

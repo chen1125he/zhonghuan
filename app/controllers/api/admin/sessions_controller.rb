@@ -16,8 +16,6 @@ class API::Admin::SessionsController < API::Admin::BaseController
     render_ok(admin_id: current_admin.id, name: current_admin.name)
   end
 
-  def
-
   def destroy
     unauthenticate_admin
     render_no_content

@@ -9,7 +9,7 @@ module AdminAuthentication
 
   def ensure_authenticated_admin
     unless authenticate_admin(session[:admin_id])
-      render json: { message: '在操作之前请先登录', retcode: 0 }, status: :unauthorized
+      render json: { message: '在操作之前请先登录', retcode: 401 }, status: :ok
     end
   end
 
