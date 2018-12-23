@@ -20,7 +20,7 @@
 class Image < ApplicationRecord
   belongs_to :owner, polymorphic: true, optional: true, touch: true
 
-  has_attached_file :file, styles: { medium: "300x300>", thumb: "100x100>" }
+  has_attached_file :file
   validates_attachment_content_type :file, content_type: /\Aimage\/.*\z/
   validates :file, attachment_presence: true
 end

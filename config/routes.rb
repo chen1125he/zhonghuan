@@ -12,6 +12,8 @@ Rails.application.routes.draw do
       resources :informations, only: [:index, :show, :create, :update, :destroy]
       resources :buildings, only: [:index, :show, :create, :update, :destroy]
       resources :advisers, only: [:index, :show, :create, :update, :destroy]
+      resources :images, only: [:create, :update]
+      resource :weapp_settings, only: [:update, :show]
     end
 
     resources :pages, only: [:index, :show]

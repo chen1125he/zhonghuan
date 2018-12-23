@@ -1,11 +1,14 @@
 {
-  sliders: render(partial: 'api/sliders/slider', collection: @sliders, as: :slider),
-  page: {
-    total_count: @sliders.total_count,
-    total_pages: @sliders.total_pages,
-    prev_page: @sliders.prev_page,
-    next_page: @sliders.next_page,
-    current_page: @sliders.current_page,
-    per: params[:per] || @sliders.limit_value
-  }
+  result_rows: {
+    sliders: render(partial: 'api/sliders/slider', collection: @sliders, as: :slider),
+    page: {
+      total_count: @sliders.total_count,
+      total_pages: @sliders.total_pages,
+      prev_page: @sliders.prev_page,
+      next_page: @sliders.next_page,
+      current_page: @sliders.current_page,
+      per: params[:per] || @sliders.limit_value
+    }
+  },
+  retcode: 0
 }

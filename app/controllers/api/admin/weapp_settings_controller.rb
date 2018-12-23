@@ -14,14 +14,14 @@ class API::Admin::WeappSettingsController < API::Admin::BaseController
   private
 
   def load_weapp_setting
-    @weapp_setting = WeappSetting.find(params[:id])
+    @weapp_setting = WeappSetting.find_or_create_by!(id: 1)
   end
 
   def weapp_setting_params
     params.require(:weapp_setting).permit(
       :information_enable,
       :share_content,
-      image_attributes: [:id, :_destroy]
+      share_picture_attributes: [:id]
     )
   end
 end

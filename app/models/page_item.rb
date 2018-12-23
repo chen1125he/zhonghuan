@@ -29,10 +29,15 @@ class PageItem < ApplicationRecord
   enumerize :item_type, in: %w(content image), default: :content
   enumerize :link_type, in: %w(none page article), default: :none
 
-  has_attached_file :image, styles: { medium: "300x300>", thumb: "100x100>" }
-  validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
-
   validates :link, presence: true, if: Proc.new{ |item| !item.link_type.none? }
-  validates :image, attachment_presence: true, if: Proc.new{ |item| item.item_type.image? }
+  validates :image, presence: true, if: Proc.new{ |item| item.item_type.image? }
   validates :content, presence: true, if: Proc.new{ |item| item.item_type.content? }
+
+  accepts_nested_attributes_for :image, allow_destroy: true
+
+  def image_attributes=(attributes)
+    image = Image.find(attributes[:id])
+    self.image = image # Preferably finding posts should be scoped
+    super(attributes)
+  end
 end

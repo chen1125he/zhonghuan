@@ -1,1 +1,4 @@
-render('api/buildings/building', building: @building)
+{
+  result_rows: render('api/buildings/building', building: @building),
+  retcode: 0
+}

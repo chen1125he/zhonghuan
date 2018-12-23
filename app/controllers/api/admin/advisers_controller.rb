@@ -42,7 +42,7 @@ class API::Admin::AdvisersController < API::Admin::BaseController
       :desc,
       :level,
       :mobile,
-      avatar_attributes: [:id, :file, :_destroy]
+      avatar_attributes: [:id]
     )
   end
 end

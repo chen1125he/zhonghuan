@@ -35,7 +35,16 @@ class API::Admin::PagesController < API::Admin::BaseController
   def page_params
     params.require(:page).permit(
       :name,
-      page_items_attributes: [:id, :position, :item_type, :image, :content, :link_type, :link, :_destroy]
+      page_items_attributes: [
+        :id,
+        :position,
+        :item_type,
+        :content,
+        :link_type,
+        :link,
+        :_destroy,
+        image_attributes: [:id]
+      ]
     )
   end
 

@@ -1,1 +1,4 @@
-render('api/pages/page', page: @page)
+{
+  result_rows: render('api/pages/page', page: @page),
+  retcode: 0
+}

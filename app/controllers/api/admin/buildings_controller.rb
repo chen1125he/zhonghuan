@@ -56,7 +56,7 @@ class API::Admin::BuildingsController < API::Admin::BaseController
       :property_fee_desc,
       :base_count,
       tags: [],
-      cover_attributes: [:id, :file, :_destroy],
+      cover_attributes: [:id],
       building_displays_attributes: [
         :id,
         :name,
@@ -65,8 +65,7 @@ class API::Admin::BuildingsController < API::Admin::BaseController
           :id,
           :name,
           :_destroy,
-          pictures_attributes: [:id, :file, :_destroy]
-
+          pictures_attributes: [:id]
         ]
       ],
       building_descriptions_attributes: [
