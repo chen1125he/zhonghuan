@@ -2,7 +2,7 @@ class API::Admin::InformationsController < API::Admin::BaseController
   before_action :load_information, only: [:show, :update, :destroy]
 
   def index
-    @informations = Information.page(params[:page]).per(params[:per])
+    @informations = Information.includes(:image).page(params[:page]).per(params[:per])
   end
 
   def show

@@ -1,5 +1,6 @@
 return unless image.present?
-return image.url
+return unless image.file.present?
+return image.file.url
 {
   original: image.url,
   thumb: image.url(:thumb),
