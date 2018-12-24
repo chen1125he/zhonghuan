@@ -1,0 +1,4 @@
+{
+  result_rows: render('api/weapp_settings/weapp_setting', weapp_setting: @weapp_setting),
+  retcode: 0
+}

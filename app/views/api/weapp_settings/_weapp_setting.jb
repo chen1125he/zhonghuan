@@ -1,0 +1,5 @@
+{
+  information_enable: weapp_setting.information_enable,
+  share_content: weapp_setting.share_content,
+  share_picture: render('api/images/image', image: weapp_setting.share_picture.file)
+}

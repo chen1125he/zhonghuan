@@ -19,4 +19,10 @@ class Adviser < ApplicationRecord
   validates :avatar, presence: true
   validates :level, inclusion: 1..5, numericality: { only_integer: true }
   validates :mobile, presence: true, format: { with: /\A1\d{10}\z/ }
+
+  def avatar_attributes=(attributes)
+    image = Image.find(attributes[:id])
+    self.avatar = image # Preferably finding posts should be scoped
+    super(attributes)
+  end
 end

@@ -22,8 +22,15 @@ class Slider < ApplicationRecord
 
   enumerize :link_type, in: %w(none page article), default: :none
 
-  has_attached_file :image, styles: { medium: "300x300>", thumb: "100x100>" }
-  validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
   validates :link, presence: true, if: Proc.new{ |item| !item.link_type.none? }
-  validates :image, attachment_presence: true
+  validates :image, presence: true
+
+  has_one :image, as: :owner, class_name: 'Image', dependent: :destroy
+  accepts_nested_attributes_for :image, allow_destroy: true
+
+  def image_attributes=(attributes)
+    image = Image.find(attributes[:id])
+    self.image = image # Preferably finding posts should be scoped
+    super(attributes)
+  end
 end

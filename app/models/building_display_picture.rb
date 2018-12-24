@@ -18,4 +18,9 @@ class BuildingDisplayPicture < ApplicationRecord
   has_many :pictures, as: :owner, class_name: 'Image', dependent: :destroy
 
   accepts_nested_attributes_for :pictures, allow_destroy: true
+
+  def pictures_attributes=(attributes)
+    self.pictures << attributes.map {|_, item| Image.find(item[:id]) }
+    super(attributes)
+  end
 end

@@ -10,12 +10,12 @@
 #
 
 class WeappSetting < ApplicationRecord
-  has_one :image, as: :owner, class_name: 'Image', dependent: :destroy
-  accepts_nested_attributes_for :image, allow_destroy: true
+  has_one :share_picture, as: :owner, class_name: 'Image', dependent: :destroy
+  accepts_nested_attributes_for :share_picture, allow_destroy: true
 
-  def image_attributes=(attributes)
+  def share_picture_attributes=(attributes)
     image = Image.find(attributes[:id])
-    self.image = image # Preferably finding posts should be scoped
+    self.share_picture = image # Preferably finding posts should be scoped
     super(attributes)
   end
 end

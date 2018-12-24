@@ -1,1 +1,4 @@
-render('api/advisers/adviser', adviser: @adviser)
+{
+  result_rows: render('api/advisers/adviser', adviser: @adviser),
+  retcode: 0
+}

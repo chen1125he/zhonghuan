@@ -36,4 +36,10 @@ class Building < ApplicationRecord
   accepts_nested_attributes_for :cover, allow_destroy: true
   accepts_nested_attributes_for :building_displays, allow_destroy: true
   accepts_nested_attributes_for :building_descriptions, allow_destroy: true
+
+  def cover_attributes=(attributes)
+    image = Image.find(attributes[:id])
+    self.cover = image # Preferably finding posts should be scoped
+    super(attributes)
+  end
 end

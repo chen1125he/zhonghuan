@@ -1,1 +1,4 @@
-render('api/informations/information', information: @information)
+{
+  result_rows: render('api/informations/information', information: @information),
+  retcode: 0
+}
