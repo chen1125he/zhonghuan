@@ -32,6 +32,7 @@ class API::Admin::ImagesController < API::Admin::BaseController
   end
 
   def image_params
+    pp params
     params.require(:image).permit(
       :file
     )

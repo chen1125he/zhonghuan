@@ -2,15 +2,11 @@ module APIRenderingHelper
   extend ActiveSupport::Concern
 
   def render_ok(data = nil)
-    data ||= {}
-    data[:retcode] = 0
-    render json: data, status: :ok
+    render json: { result_rows: data || {}, retcode: 0 }, status: :ok
   end
 
   def render_created(data = nil)
-    data ||= {}
-    data[:retcode] = 0
-    render json: data, status: :created
+    render json: { result_rows: data || {}, retcode: 0 }, status: :created
   end
 
   def render_no_content

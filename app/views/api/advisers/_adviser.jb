@@ -4,5 +4,5 @@
   desc: adviser.desc,
   level: adviser.level,
   mobile: adviser.mobile,
-  avatar: render('api/images/image', image: adviser.avatar.file)
+  avatar: render('api/images/image', image: adviser.avatar)
 }
