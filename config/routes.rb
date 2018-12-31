@@ -14,6 +14,8 @@ Rails.application.routes.draw do
       resources :advisers, only: [:index, :show, :create, :update, :destroy]
       resources :images, only: [:create, :update]
       resource :weapp_settings, only: [:update, :show]
+
+      resources :sessions, only: [:create]
     end
 
     resources :pages, only: [:index, :show]
@@ -21,5 +23,6 @@ Rails.application.routes.draw do
     resources :informations, only: [:index, :show]
     resources :buildings, only: [:index, :show]
     resources :advisers, only: [:index, :show]
+    resources :sessions, only: [:create]
   end
 end

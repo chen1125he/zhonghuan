@@ -15,7 +15,7 @@ module APIRenderingHelper
 
   def render_unauthorized(message = nil)
     message ||= '你还未登录'
-    render json: { message: message, retcode: 401 }, status: :ok
+    render json: { message: message, retcode: 401 }, status: :unauthorized
   end
 
   def render_forbidden(message = nil)

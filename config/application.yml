@@ -13,3 +13,6 @@ UPYUN_BUCKET_HOST: ''
 
 # sidekiq namespace
 SIDEKIQ_NAMESPACE: ''
+
+WX_WEAPP_APPID: 'wx1e0de85fe9cd765e'
+WX_WEAPP_APPSECRET: 'a81a37aba2ce9e09257afd6e9f7c9e36'
