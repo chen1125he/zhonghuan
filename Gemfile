@@ -47,6 +47,9 @@ gem 'lograge'
 gem 'enumerize'
 gem 'paperclip'
 gem 'jb'
+gem 'active_link_to'
+gem 'http'
+gem 'jwt'
 
 group :development do
   gem 'rails_apps_testing'
