@@ -1,0 +1,33 @@
+wb = xlsx_package.workbook
+wb.add_worksheet(name: '用户列表') do |sheet|
+  sheet.add_row %w(
+    openID
+    微信名
+    手机号
+    地址
+    总关注数
+    楼盘一
+    楼盘二
+    楼盘三
+  )
+
+  @users.each do |user|
+    address = "#{user.raw.try('[]', :province)}-#{user.raw.try('[]', :city)}"
+
+    new_row = [
+      user.uid,
+      user.raw.try('[]', :nickName),
+      '-',
+      address,
+      0,
+      0,
+      0,
+      0
+    ]
+
+    sheet.add_row(
+      new_row,
+      types: [:string] * new_row.length
+    )
+  end
+end

@@ -10,6 +10,12 @@ gem 'jbuilder', '~> 2.5'
 gem 'bcrypt-ruby', '~> 3.1.2'
 gem 'listen', '~> 3.0.5'
 
+gem 'axlsx', git: 'https://github.com/randym/axlsx.git', ref: 'c8ac844'
+gem 'axlsx_rails'
+gem 'roo', '~> 2.7.0'
+
+gem 'slim-rails'
+
 group :development, :test do
   gem 'byebug', platform: :mri
 end
@@ -53,6 +59,8 @@ gem 'jwt'
 
 group :development do
   gem 'rails_apps_testing'
+  gem 'pry'
+  gem 'pry-rails'
 end
 
 group :development, :test do

@@ -1,0 +1,6 @@
+{
+  buildings: render(partial: 'api/buildings/building', collection: @buildings, as: :building),
+  page: {
+  },
+  retcode: 0
+}
