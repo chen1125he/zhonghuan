@@ -45,7 +45,7 @@ class API::Admin::InformationsController < API::Admin::BaseController
       :desc,
       :public_at,
       :base_number,
-      image_attributes: [:id]
+      image_attributes: [:id, :_destroy]
     )
   end
 end

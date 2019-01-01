@@ -42,7 +42,7 @@ class API::Admin::SlidersController < API::Admin::BaseController
       :link_type,
       :link,
       :position,
-      image_attributes: [:id]
+      image_attributes: [:id, :_destroy]
     )
   end
 end
