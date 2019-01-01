@@ -37,7 +37,6 @@ class API::Admin::BuildingsController < API::Admin::BaseController
   end
 
   def building_params
-    pp 'params', params
     params.require(:building).permit(
       :price_per_sqm,
       :name,
