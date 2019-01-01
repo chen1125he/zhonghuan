@@ -36,7 +36,6 @@ module RailsTemplateExample
       allow do
         origins 'localhost:8080'
         credentials true
-        resource '*', headers: :any, methods: [:get, :post, :put, :delete, :patch]
       end
     end
   end
