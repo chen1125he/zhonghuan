@@ -1,0 +1,7 @@
+{
+  visitors: @visitors,
+  propertyVisitorCount: @visitors.count,
+  myVisitorCount: 0,
+  propertyAdviserList: [],
+  myAdviserList: []
+}
