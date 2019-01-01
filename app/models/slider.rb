@@ -18,8 +18,6 @@
 class Slider < ApplicationRecord
   extend Enumerize
 
-  validates :name, presence: true
-
   enumerize :link_type, in: %w(none page article), default: :none
 
   validates :link, presence: true, if: Proc.new{ |item| !item.link_type.none? }
