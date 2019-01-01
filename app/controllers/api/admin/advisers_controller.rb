@@ -42,6 +42,7 @@ class API::Admin::AdvisersController < API::Admin::BaseController
       :desc,
       :level,
       :mobile,
+      :building_id,
       avatar_attributes: [:id]
     )
   end

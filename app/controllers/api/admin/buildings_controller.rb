@@ -68,7 +68,7 @@ class API::Admin::BuildingsController < API::Admin::BaseController
           pictures_attributes: [:id]
         ]
       ],
-      building_descriptions_attributes: [
+      building_description_attributes: [
         :id,
         :sub_desc,
         :_destroy,
