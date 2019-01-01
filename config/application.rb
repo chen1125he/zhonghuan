@@ -35,7 +35,7 @@ module RailsTemplateExample
     config.middleware.insert_before 0, Rack::Cors do
       allow do
         origins 'localhost:8080'
-        credentials true
+        resource '*', headers: :any, methods: [:get, :post, :put, :delete, :patch], credentials: true
       end
     end
   end
