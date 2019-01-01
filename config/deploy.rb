@@ -30,6 +30,9 @@ task :setup do
   command %[mkdir -p "#{fetch(:shared_path)}/public/uploads"]
   command %[chmod g+rx,u+rwx "#{fetch(:shared_path)}/public/uploads"]
 
+  command %[mkdir -p "#{fetch(:shared_path)}/public/system"]
+  command %[chmod g+rx,u+rwx "#{fetch(:shared_path)}/public/system"]
+
   command %[mkdir -p "#{fetch(:shared_path)}/config"]
   command %[chmod g+rx,u+rwx "#{fetch(:shared_path)}/config"]
 
