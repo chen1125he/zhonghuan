@@ -2,7 +2,7 @@ module AdminAuthentication
   extend ActiveSupport::Concern
 
   included do
-    # before_action :ensure_authenticated_admin
+    before_action :ensure_authenticated_admin
   end
 
   private
