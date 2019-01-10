@@ -20,5 +20,5 @@
   tags: building.tags,
   cover: render('api/images/image', image: building.cover),
   building_displays: render(partial: 'api/building_displays/building_display', collection: building.building_displays, as: :building_display),
-  building_descriptions: render(partial: 'api/building_descriptions/building_description', collection: building.building_descriptions, as: :building_description)
+  building_description: render('api/building_descriptions/building_description', building_description: building.building_description)
 }

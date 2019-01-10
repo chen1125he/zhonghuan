@@ -1,3 +1,4 @@
+return unless building_description.present?
 {
   id: building_description.id,
   sub_desc: building_description.sub_desc,

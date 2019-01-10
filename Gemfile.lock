@@ -33,6 +33,17 @@ GIT
   specs:
     high_voltage (3.1.0)
 
+GIT
+  remote: https://github.com/randym/axlsx.git
+  revision: c8ac844572b25fda358cc01d2104720c4c42f450
+  ref: c8ac844
+  specs:
+    axlsx (2.1.0.pre)
+      htmlentities (~> 4.3.4)
+      mimemagic (~> 0.3)
+      nokogiri (>= 1.6.6)
+      rubyzip (>= 1.2.1)
+
 GEM
   remote: https://gems.ruby-china.com/
   specs:
@@ -59,6 +70,9 @@ GEM
       erubis (~> 2.7.0)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.0, >= 1.0.3)
+    active_link_to (1.0.5)
+      actionpack
+      addressable
     activejob (5.0.7.1)
       activesupport (= 5.0.7.1)
       globalid (>= 0.3.6)
@@ -81,6 +95,9 @@ GEM
     arel (7.1.4)
     autoprefixer-rails (9.4.3)
       execjs
+    axlsx_rails (0.5.2)
+      actionpack (>= 3.1)
+      axlsx (>= 2.0.1)
     bcrypt (3.1.12)
     bcrypt-ruby (3.1.5)
       bcrypt (>= 3.1.3)
@@ -113,6 +130,7 @@ GEM
     childprocess (0.9.0)
       ffi (~> 1.0, >= 1.0.11)
     climate_control (0.2.0)
+    coderay (1.1.2)
     coffee-rails (4.2.2)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0)
@@ -125,6 +143,8 @@ GEM
     crass (1.0.4)
     database_cleaner (1.7.0)
     diff-lcs (1.3)
+    domain_name (0.5.20180417)
+      unf (>= 0.0.5, < 1.0.0)
     enumerize (2.2.2)
       activesupport (>= 3.2)
     erubis (2.7.0)
@@ -143,6 +163,16 @@ GEM
       sassc (>= 1.11)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
+    htmlentities (4.3.4)
+    http (3.3.0)
+      addressable (~> 2.3)
+      http-cookie (~> 1.0)
+      http-form_data (~> 2.0)
+      http_parser.rb (~> 0.6.0)
+    http-cookie (1.0.3)
+      domain_name (~> 0.5)
+    http-form_data (2.1.1)
+    http_parser.rb (0.6.0)
     i18n (0.9.5)
       concurrent-ruby (~> 1.0)
     jb (0.5.0)
@@ -154,6 +184,7 @@ GEM
       rails-dom-testing (>= 1, < 3)
       railties (>= 4.2.0)
       thor (>= 0.14, < 2.0)
+    jwt (2.1.0)
     launchy (2.4.3)
       addressable (~> 2.3)
     listen (3.0.8)
@@ -203,6 +234,11 @@ GEM
       mimemagic (~> 0.3.0)
       terrapin (~> 0.6.0)
     pg (1.1.3)
+    pry (0.12.2)
+      coderay (~> 1.1.0)
+      method_source (~> 0.9.0)
+    pry-rails (0.3.7)
+      pry (>= 0.10.4)
     public_suffix (3.0.3)
     puma (3.12.0)
     rack (2.0.6)
@@ -246,6 +282,9 @@ GEM
     regexp_parser (1.3.0)
     request_store (1.4.1)
       rack (>= 1.4)
+    roo (2.7.1)
+      nokogiri (~> 1)
+      rubyzip (~> 1.1, < 2.0.0)
     rspec-core (3.8.0)
       rspec-support (~> 3.8.0)
     rspec-expectations (3.8.2)
@@ -322,6 +361,9 @@ GEM
       thread_safe (~> 0.1)
     uglifier (4.1.20)
       execjs (>= 0.3.0, < 3)
+    unf (0.1.4)
+      unf_ext
+    unf_ext (0.0.7.5)
     web-console (3.7.0)
       actionview (>= 5.0)
       activemodel (>= 5.0)
@@ -337,7 +379,10 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  active_link_to
   annotate
+  axlsx!
+  axlsx_rails
   bcrypt-ruby (~> 3.1.2)
   bootstrap-sass
   browser_warrior
@@ -352,9 +397,11 @@ DEPENDENCIES
   figaro
   font-awesome-sass
   high_voltage!
+  http
   jb
   jbuilder (~> 2.5)
   jquery-rails
+  jwt
   kaminari!
   launchy
   listen (~> 3.0.5)
@@ -365,12 +412,15 @@ DEPENDENCIES
   mina-sidekiq
   paperclip
   pg
+  pry
+  pry-rails
   puma (~> 3.0)
   rack-cors
   rails (~> 5.0.0)
   rails-i18n (~> 5.0.0)
   rails_apps_testing
   redis-namespace
+  roo (~> 2.7.0)
   rspec-rails
   sass-rails (~> 5.0)
   selenium-webdriver

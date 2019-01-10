@@ -21,7 +21,7 @@ class API::Admin::WeappSettingsController < API::Admin::BaseController
     params.require(:weapp_setting).permit(
       :information_enable,
       :share_content,
-      share_picture_attributes: [:id]
+      share_picture_attributes: [:id, :_destroy]
     )
   end
 end

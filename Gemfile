@@ -10,6 +10,12 @@ gem 'jbuilder', '~> 2.5'
 gem 'bcrypt-ruby', '~> 3.1.2'
 gem 'listen', '~> 3.0.5'
 
+gem 'axlsx', git: 'https://github.com/randym/axlsx.git', ref: 'c8ac844'
+gem 'axlsx_rails'
+gem 'roo', '~> 2.7.0'
+
+gem 'slim-rails'
+
 group :development, :test do
   gem 'byebug', platform: :mri
 end
@@ -19,9 +25,9 @@ group :development do
   gem 'web-console'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
-  gem 'rack-cors', :require => 'rack/cors'
 end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'rack-cors', :require => 'rack/cors'
 
 gem 'pg'
 gem 'figaro'
@@ -47,9 +53,14 @@ gem 'lograge'
 gem 'enumerize'
 gem 'paperclip'
 gem 'jb'
+gem 'active_link_to'
+gem 'http'
+gem 'jwt'
 
 group :development do
   gem 'rails_apps_testing'
+  gem 'pry'
+  gem 'pry-rails'
 end
 
 group :development, :test do

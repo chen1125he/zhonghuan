@@ -1,8 +1,6 @@
 return unless image.present?
 return unless image.file.present?
-return image.file.url
 {
-  original: image.url,
-  thumb: image.url(:thumb),
-  medium: image.url(:medium)
+  id: image&.id,
+  url: image.file&.url
 }

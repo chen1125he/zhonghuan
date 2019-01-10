@@ -38,11 +38,10 @@ class API::Admin::SlidersController < API::Admin::BaseController
 
   def slider_params
     params.require(:slider).permit(
-      :name,
       :link_type,
       :link,
       :position,
-      image_attributes: [:id]
+      image_attributes: [:id, :_destroy]
     )
   end
 end

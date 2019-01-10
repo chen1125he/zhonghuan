@@ -43,7 +43,7 @@ class API::Admin::PagesController < API::Admin::BaseController
         :link_type,
         :link,
         :_destroy,
-        image_attributes: [:id]
+        image_attributes: [:id, :_destroy]
       ]
     )
   end

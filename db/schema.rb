@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181222145431) do
+ActiveRecord::Schema.define(version: 20190101111010) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,8 +27,10 @@ ActiveRecord::Schema.define(version: 20181222145431) do
     t.text     "desc"
     t.string   "mobile"
     t.integer  "level"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "building_id"
+    t.index ["building_id"], name: "index_advisers_on_building_id", using: :btree
   end
 
   create_table "building_description_details", force: :cascade do |t|
@@ -137,6 +139,16 @@ ActiveRecord::Schema.define(version: 20181222145431) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "sessions", force: :cascade do |t|
+    t.string   "token"
+    t.datetime "expires_at"
+    t.string   "session_key"
+    t.integer  "user_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["user_id"], name: "index_sessions_on_user_id", using: :btree
+  end
+
   create_table "sliders", force: :cascade do |t|
     t.string   "name"
     t.string   "link_type"
@@ -150,6 +162,14 @@ ActiveRecord::Schema.define(version: 20181222145431) do
     t.datetime "updated_at",                     null: false
   end
 
+  create_table "users", force: :cascade do |t|
+    t.string   "uid",                     comment: "微信用户的openid"
+    t.json     "raw",                     comment: "原始认证信息"
+    t.string   "name",                    comment: "昵称"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "weapp_settings", force: :cascade do |t|
     t.boolean  "information_enable", default: true
     t.string   "share_content"
@@ -157,4 +177,5 @@ ActiveRecord::Schema.define(version: 20181222145431) do
     t.datetime "updated_at",                        null: false
   end
 
+  add_foreign_key "sessions", "users"
 end
