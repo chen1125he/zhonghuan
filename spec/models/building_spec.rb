@@ -9,6 +9,7 @@
 #  decoration_standard :string
 #  delivery_date       :date
 #  developer           :string
+#  district            :string
 #  green_rate          :string
 #  latitude            :float
 #  longitude           :float

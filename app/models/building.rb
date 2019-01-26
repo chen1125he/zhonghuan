@@ -9,6 +9,7 @@
 #  decoration_standard :string
 #  delivery_date       :date
 #  developer           :string
+#  district            :string
 #  green_rate          :string
 #  latitude            :float
 #  longitude           :float
@@ -26,10 +27,14 @@
 #
 
 class Building < ApplicationRecord
+  include GeographicalAddress
+
   has_one :cover, as: :owner, class_name: 'Image'
   has_many :building_displays, dependent: :destroy
   has_one :building_description, dependent: :destroy
-  has_many :advisers
+  has_many :advisers, dependent: :nullify
+  has_many :building_visitors, -> { order('building_visitors.created_at DESC') }, dependent: :destroy
+  has_many :without_invitor_building_visitors, -> { where('building_visitors.invitor_id' => nil).order('building_visitors.created_at DESC') }, through: :building_visitors
 
   validates :name, presence: true
   validates :cover, presence: true
@@ -37,6 +42,8 @@ class Building < ApplicationRecord
   accepts_nested_attributes_for :cover, allow_destroy: true
   accepts_nested_attributes_for :building_displays, allow_destroy: true
   accepts_nested_attributes_for :building_description, allow_destroy: true
+
+  address_methods :address
 
   def cover_attributes=(attributes)
     image = Image.find(attributes[:id])

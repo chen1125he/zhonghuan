@@ -74,7 +74,7 @@ module WxAPI
       when :json
         result = ActiveSupport::JSON.decode(response.body.to_s).with_indifferent_access
       when :file
-        if %r{^image\/.*}.match?(response.headers[:content_type])
+        if %r{^image\/.*}.match(response.headers[:content_type])
           extension =
             case response.headers['content-type']
             when 'image/gif'  then '.gif'

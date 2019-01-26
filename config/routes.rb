@@ -26,9 +26,15 @@ Rails.application.routes.draw do
     resources :sliders, only: [:index, :show]
     resources :informations, only: [:index, :show]
     resources :buildings, only: [:index, :show] do
-      resources :building_visitors, only: [:index], controller: 'building_visitors'
+      resources :building_visitors, only: [:index], controller: 'building_visitors' do
+        collection do
+          get :me, action: :show
+        end
+      end
     end
+    resource :current_user, only: [:show, :update]
     resources :advisers, only: [:index, :show]
     resources :sessions, only: [:create]
+    resource :weapp_settings, only: [:show]
   end
 end
