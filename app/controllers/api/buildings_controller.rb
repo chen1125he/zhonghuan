@@ -16,12 +16,12 @@ class API::BuildingsController < API::BaseController
     @building = Building.find(params[:id])
   end
 
-  def load_building
-    @invitor = Building.find_by(invitor_id: params[:invitor_id])
+  def load_invitor
+    @invitor = User.find_by(id: params[:invitor_id])
   end
 
   def add_visitor
-    @building.without_invitor_building_visitors.find_or_create_by!(visitor: current_user)
+    @building.building_visitors.find_or_create_by!(visitor: current_user, invitor: nil)
     @building.building_visitors.find_or_create_by!(visitor: current_user, invitor: @invitor) if @invitor.present?
   end
 end
