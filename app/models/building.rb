@@ -34,7 +34,7 @@ class Building < ApplicationRecord
   has_one :building_description, dependent: :destroy
   has_many :advisers, dependent: :nullify
   has_many :building_visitors, -> { order('building_visitors.created_at DESC') }, dependent: :destroy
-  has_many :without_invitor_building_visitors, -> { where('building_visitors.invitor_id' => nil).order('building_visitors.created_at DESC') }, through: :building_visitors
+  has_many :without_invitor_building_visitors, -> { where('building_visitors.invitor_id' => nil).order('building_visitors.created_at DESC') }, through: :building_visitors, source: :visitor
 
   validates :name, presence: true
   validates :cover, presence: true
