@@ -22,9 +22,9 @@
   cover: render('api/images/image', image: building.cover),
   building_displays: render(partial: 'api/building_displays/building_display', collection: building.building_displays, as: :building_display),
   building_description: render('api/building_descriptions/building_description', building_description: building.building_description),
-  advisers: render('api/advisers/adviser', collection: building.advisers, as: :adviser),
-  building_visitors: render('api/users/user', collection: building.without_invitor_building_visitors.limit(10).map(&:visitor), as: :user),
+  advisers: render(partial: 'api/advisers/adviser', collection: building.advisers, as: :adviser),
+  building_visitors: render(partial: 'api/users/user', collection: building.without_invitor_building_visitors.limit(10).map(&:visitor), as: :user),
   building_visitor_count: building.without_invitor_building_visitors.count,
-  my_building_visitors: render('api/users/user', collection: building.building_visitors.where(invitor: current_user).limit(10).map(&:visitor), as: :user),
+  my_building_visitors: render(partial: 'api/users/user', collection: building.building_visitors.where(invitor: current_user).limit(10).map(&:visitor), as: :user),
   my_building_visitor_count: building.building_visitors.where(invitor: current_user).count,
 }
