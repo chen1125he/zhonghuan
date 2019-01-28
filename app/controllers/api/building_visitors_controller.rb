@@ -3,11 +3,11 @@ class API::BuildingVisitorsController < API::BaseController
   before_action :load_building_visitor, only: [:show]
 
   def index
-    @building_visitors = case params[:invitor_id].to_i
+    @building_visitors = case params[:mine].to_i
                               when 0
                                 @building.without_invitor_building_visitors.page(params[:page]).per(params[:per])
                               else
-                                @building.building_visitors.where('building_visitors.invitor_id' => params[:invitor_id]).page(params[:page]).per(params[:per])
+                                @building.building_visitors.where('building_visitors.invitor_id' => current_user.id).page(params[:page]).per(params[:per])
                               end
   end
 

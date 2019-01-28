@@ -1,12 +1,14 @@
 {
-  building_visitors: render(partial: 'api/users/user', collection: @building_visitors.map(&:visitor), as: :user),
-  page: {
-    total_count: @building_visitors.total_count,
-    total_pages: @building_visitors.total_pages,
-    prev_page: @building_visitors.prev_page,
-    next_page: @building_visitors.next_page,
-    current_page: @building_visitors.current_page,
-    per: params[:per] || @building_visitors.limit_value
-  }
+  result_rows: {
+    building_visitors: render(partial: 'api/users/user', collection: @building_visitors.map(&:visitor), as: :user),
+    page: {
+      total_count: @building_visitors.total_count,
+      total_pages: @building_visitors.total_pages,
+      prev_page: @building_visitors.prev_page,
+      next_page: @building_visitors.next_page,
+      current_page: @building_visitors.current_page,
+      per: params[:per] || @building_visitors.limit_value
+    }
+  },
   retcode: 0
 }

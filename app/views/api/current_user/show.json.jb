@@ -1,4 +1,6 @@
 {
-  user: render('api/users/user'， user: current_user),
+  result_rows: {
+    user: render('api/users/user'， user: current_user),
+  },
   retcode: 0
 }
