@@ -1,6 +1,6 @@
 {
   result_rows: {
-    user: render('api/users/user'， user: @building_visitor.visitor),
+    user: render('api/users/user', user: @building_visitor.visitor),
     qrcode: render('api/images/image', image: @building_visitor.qrcode)
   },
   retcode: 0

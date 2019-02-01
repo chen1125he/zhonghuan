@@ -23,6 +23,6 @@ class API::BuildingVisitorsController < API::BaseController
   end
 
   def load_building_visitor
-    @building_visitor = @building.without_invitor_building_visitors.find(visitor: current_user)
+    @building_visitor = @building.building_visitors.find_or_create_by!(visitor: current_user, invitor: nil)
   end
 end
