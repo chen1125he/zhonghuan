@@ -1,4 +1,5 @@
 {
   id: user.id,
+  openid: user.uid,
   raw: user.raw
 }
