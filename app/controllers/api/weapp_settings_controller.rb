@@ -6,6 +6,6 @@ class API::WeappSettingsController < API::BaseController
   private
 
   def load_weapp_setting
-    @weapp_setting = WeappSetting.first
+    @weapp_setting = WeappSetting.first || WeappSetting.create
   end
 end
