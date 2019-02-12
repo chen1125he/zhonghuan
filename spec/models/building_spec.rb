@@ -6,6 +6,7 @@
 #  address             :string
 #  base_count          :integer
 #  car_position_count  :integer
+#  cover_link          :string
 #  decoration_standard :string
 #  delivery_date       :date
 #  developer           :string

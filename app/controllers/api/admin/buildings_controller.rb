@@ -55,8 +55,10 @@ class API::Admin::BuildingsController < API::Admin::BaseController
       :plot_ratio,
       :property_fee_desc,
       :base_count,
+      :cover_link,
       tags: [],
       cover_attributes: [:id, :_destroy],
+      poster_attributes: [:id, :_destroy],
       building_displays_attributes: [
         :id,
         :name,

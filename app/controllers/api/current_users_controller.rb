@@ -1,4 +1,4 @@
-class API::CurrentUserController < API::BaseController
+class API::CurrentUsersController < API::BaseController
   def show
   end
 

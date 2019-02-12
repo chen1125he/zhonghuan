@@ -20,6 +20,7 @@ Rails.application.routes.draw do
       resources :sessions, only: [:create]
 
       resources :export_users, only: [:create]
+      resources :users, only: [:index]
     end
 
     resources :pages, only: [:index, :show]

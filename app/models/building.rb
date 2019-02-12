@@ -6,6 +6,7 @@
 #  address             :string
 #  base_count          :integer
 #  car_position_count  :integer
+#  cover_link          :string
 #  decoration_standard :string
 #  delivery_date       :date
 #  developer           :string
@@ -30,6 +31,7 @@ class Building < ApplicationRecord
   include GeographicalAddress
 
   has_one :cover, as: :owner, class_name: 'Image'
+  has_one :poster, as: :owner, class_name: 'Image'
   has_many :building_displays, dependent: :destroy
   has_one :building_description, dependent: :destroy
   has_many :advisers, dependent: :nullify
@@ -38,8 +40,10 @@ class Building < ApplicationRecord
 
   validates :name, presence: true
   validates :cover, presence: true
+  validates :poster, presence: true
 
   accepts_nested_attributes_for :cover, allow_destroy: true
+  accepts_nested_attributes_for :poster, allow_destroy: true
   accepts_nested_attributes_for :building_displays, allow_destroy: true
   accepts_nested_attributes_for :building_description, allow_destroy: true
 
@@ -48,6 +52,12 @@ class Building < ApplicationRecord
   def cover_attributes=(attributes)
     image = Image.find(attributes[:id])
     self.cover = image # Preferably finding posts should be scoped
+    super(attributes)
+  end
+
+  def poster_attributes=(attributes)
+    image = Image.find(attributes[:id])
+    self.poster = image # Preferably finding posts should be scoped
     super(attributes)
   end
 end
