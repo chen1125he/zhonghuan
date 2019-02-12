@@ -1,4 +1,4 @@
-class API::Admin::WeappSettingsController < API::Admin::BaseController
+class API::WeappSettingsController < API::BaseController
   before_action :load_weapp_setting, only: [:show]
   def show
   end
