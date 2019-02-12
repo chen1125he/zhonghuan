@@ -1,6 +1,6 @@
 {
   result_rows: {
-    weapp_setting: render('api/weapp_settings/weapp_setting'， weapp_setting: @weapp_setting),
+    weapp_setting: render('api/weapp_settings/weapp_setting', weapp_setting: @weapp_setting),
   },
   retcode: 0
 }
