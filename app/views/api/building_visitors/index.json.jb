@@ -1,6 +1,6 @@
 {
   result_rows: {
-    building_visitors: render(partial: 'api/users/user', collection: @building_visitors.map(&:visitor), as: :user),
+    building_visitors: render(partial: 'api/building_visitors/building_visitor', collection: @building_visitors, as: :building_visitor),
     page: {
       total_count: @building_visitors.total_count,
       total_pages: @building_visitors.total_pages,
