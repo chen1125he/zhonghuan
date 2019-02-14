@@ -16,6 +16,7 @@
 #  longitude           :float
 #  name                :string
 #  opening_date        :date
+#  phone               :string
 #  plot_ratio          :string
 #  price_per_sqm       :integer
 #  property_company    :string

@@ -16,6 +16,7 @@
 #  longitude           :float
 #  name                :string
 #  opening_date        :date
+#  phone               :string
 #  plot_ratio          :string
 #  price_per_sqm       :integer
 #  property_company    :string
@@ -31,7 +32,7 @@ class Building < ApplicationRecord
   include GeographicalAddress
 
   has_one :cover, as: :owner, class_name: 'Image'
-  has_one :poster, as: :owner, class_name: 'Image'
+  has_one :poster, -> { where(special_type: 'BuildingPoster') }, as: :owner, class_name: 'Image'
   has_many :building_displays, dependent: :destroy
   has_one :building_description, dependent: :destroy
   has_many :advisers, dependent: :nullify
@@ -57,6 +58,7 @@ class Building < ApplicationRecord
 
   def poster_attributes=(attributes)
     image = Image.find(attributes[:id])
+    image.special_type = 'BuildingPoster'
     self.poster = image # Preferably finding posts should be scoped
     super(attributes)
   end

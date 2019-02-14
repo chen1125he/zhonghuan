@@ -8,6 +8,7 @@
 #  file_file_size    :bigint(8)
 #  file_updated_at   :datetime
 #  owner_type        :string
+#  special_type      :string
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
 #  owner_id          :integer

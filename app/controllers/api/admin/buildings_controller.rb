@@ -40,6 +40,7 @@ class API::Admin::BuildingsController < API::Admin::BaseController
     params.require(:building).permit(
       :price_per_sqm,
       :name,
+      :phone,
       :address,
       :latitude,
       :longitude,

@@ -10,6 +10,7 @@
   latitude: building.latitude,
   longitude: building.longitude,
   name: building.name,
+  phone: building.phone,
   opening_date: building.opening_date,
   plot_ratio: building.plot_ratio,
   price_per_sqm: building.price_per_sqm,
