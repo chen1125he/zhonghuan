@@ -8,6 +8,7 @@
 #  car_position_count  :integer
 #  cover_link          :string
 #  decoration_standard :string
+#  deleted_at          :datetime
 #  delivery_date       :date
 #  developer           :string
 #  district            :string
@@ -29,6 +30,7 @@
 #
 
 class Building < ApplicationRecord
+  include SoftDeletable
   include GeographicalAddress
 
   has_one :cover, as: :owner, class_name: 'Image'

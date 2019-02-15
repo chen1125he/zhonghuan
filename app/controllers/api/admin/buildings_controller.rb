@@ -26,7 +26,7 @@ class API::Admin::BuildingsController < API::Admin::BaseController
   end
 
   def destroy
-    @building.destroy
+    @building.soft_delete
     render_ok(id: @building.id)
   end
 

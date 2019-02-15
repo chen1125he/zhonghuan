@@ -3,6 +3,7 @@
 # Table name: building_visitors
 #
 #  id          :integer          not null, primary key
+#  deleted_at  :datetime
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #  building_id :integer

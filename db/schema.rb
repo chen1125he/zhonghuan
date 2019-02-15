@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190214123032) do
+ActiveRecord::Schema.define(version: 20190215033006) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -72,6 +72,7 @@ ActiveRecord::Schema.define(version: 20190214123032) do
     t.integer  "invitor_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.datetime "deleted_at"
     t.index ["building_id"], name: "index_building_visitors_on_building_id", using: :btree
     t.index ["invitor_id"], name: "index_building_visitors_on_invitor_id", using: :btree
     t.index ["visitor_id"], name: "index_building_visitors_on_visitor_id", using: :btree
@@ -101,6 +102,7 @@ ActiveRecord::Schema.define(version: 20190214123032) do
     t.string   "district"
     t.string   "cover_link"
     t.string   "phone"
+    t.datetime "deleted_at"
   end
 
   create_table "images", force: :cascade do |t|

@@ -3,6 +3,7 @@
 # Table name: building_visitors
 #
 #  id          :integer          not null, primary key
+#  deleted_at  :datetime
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #  building_id :integer
@@ -22,6 +23,8 @@
 #
 
 class BuildingVisitor < ApplicationRecord
+  include SoftDeletable
+  
   belongs_to :building
   belongs_to :invitor, class_name: 'User', optional: true
   belongs_to :visitor, class_name: 'User'

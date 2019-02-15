@@ -8,6 +8,7 @@
 #  car_position_count  :integer
 #  cover_link          :string
 #  decoration_standard :string
+#  deleted_at          :datetime
 #  delivery_date       :date
 #  developer           :string
 #  district            :string

@@ -11,7 +11,10 @@ Rails.application.routes.draw do
       resources :pages, only: [:index, :show, :create, :update, :destroy]
       resources :sliders, only: [:index, :show, :create, :update, :destroy]
       resources :informations, only: [:index, :show, :create, :update, :destroy]
-      resources :buildings, only: [:index, :show, :create, :update, :destroy]
+      resources :buildings, only: [:index, :show, :create, :update, :destroy] do
+        resource :building_visitors, only: [:destroy]
+        resource :building_user_visitors, only: [:destroy]
+      end
 
       resources :advisers, only: [:index, :show, :create, :update, :destroy]
       resources :images, only: [:create, :update]
@@ -19,7 +22,7 @@ Rails.application.routes.draw do
 
       resources :sessions, only: [:create]
 
-      resources :export_users, only: [:create]
+      resources :export_users, only: [:index]
       resources :users, only: [:index]
     end
 
