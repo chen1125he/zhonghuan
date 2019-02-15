@@ -1,7 +1,14 @@
 {
-  visitors: @visitors,
-  propertyVisitorCount: @visitors.count,
-  myVisitorCount: 0,
-  propertyAdviserList: [],
-  myAdviserList: []
+  result_rows: {
+    building_visitors: render(partial: 'api/building_visitors/building_visitor', collection: @building_visitors, as: :building_visitor),
+    page: {
+      total_count: @building_visitors.total_count,
+      total_pages: @building_visitors.total_pages,
+      prev_page: @building_visitors.prev_page,
+      next_page: @building_visitors.next_page,
+      current_page: @building_visitors.current_page,
+      per: params[:per] || @building_visitors.limit_value
+    }
+  },
+  retcode: 0
 }

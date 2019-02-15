@@ -26,7 +26,7 @@ class API::Admin::BuildingsController < API::Admin::BaseController
   end
 
   def destroy
-    @building.destroy
+    @building.soft_delete
     render_ok(id: @building.id)
   end
 
@@ -40,6 +40,7 @@ class API::Admin::BuildingsController < API::Admin::BaseController
     params.require(:building).permit(
       :price_per_sqm,
       :name,
+      :phone,
       :address,
       :latitude,
       :longitude,
@@ -55,8 +56,10 @@ class API::Admin::BuildingsController < API::Admin::BaseController
       :plot_ratio,
       :property_fee_desc,
       :base_count,
+      :cover_link,
       tags: [],
       cover_attributes: [:id, :_destroy],
+      poster_attributes: [:id, :_destroy],
       building_displays_attributes: [
         :id,
         :name,

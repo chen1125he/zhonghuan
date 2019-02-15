@@ -1,5 +1,6 @@
 {
-  building: render('api/buildings/building', building: @building),
-  page: {
-  }
+  result_rows: {
+    building: render('api/buildings/building', building: @building)
+  },
+  retcode: 0
 }

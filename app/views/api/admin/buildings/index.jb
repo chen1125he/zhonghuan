@@ -1,6 +1,6 @@
 {
   result_rows: {
-    buildings: render(partial: 'api/buildings/building', collection: @buildings, as: :building),
+    buildings: render(partial: 'api/buildings/slim_building', collection: @buildings, as: :building),
     page: {
       total_count: @buildings.total_count,
       total_pages: @buildings.total_pages,

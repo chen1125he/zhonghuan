@@ -1,0 +1,14 @@
+{
+  result_rows: {
+    users: render(partial: 'api/users/user', collection: @users, as: :user),
+    page: {
+      total_count: @users.total_count,
+      total_pages: @users.total_pages,
+      prev_page: @users.prev_page,
+      next_page: @users.next_page,
+      current_page: @users.current_page,
+      per: params[:per] || @users.limit_value
+    }
+  },
+  retcode: 0
+}

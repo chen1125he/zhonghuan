@@ -1,6 +1,6 @@
 class API::Admin::ExportUsersController < API::Admin::BaseController
-  def create
+  def index
   	@users = User.all
-    render xlsx: 'create', filename: format('用户列表.xlsx', Time.current.strftime('%Y-%m-%d'))
+    render xlsx: 'index', filename: format('用户列表_%<time>s.xlsx', time: Time.current.strftime('%Y-%m-%d'))
   end
 end

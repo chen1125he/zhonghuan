@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190101111010) do
+ActiveRecord::Schema.define(version: 20190215033006) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -66,6 +66,18 @@ ActiveRecord::Schema.define(version: 20190101111010) do
     t.index ["building_id"], name: "index_building_displays_on_building_id", using: :btree
   end
 
+  create_table "building_visitors", force: :cascade do |t|
+    t.integer  "building_id"
+    t.integer  "visitor_id"
+    t.integer  "invitor_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.datetime "deleted_at"
+    t.index ["building_id"], name: "index_building_visitors_on_building_id", using: :btree
+    t.index ["invitor_id"], name: "index_building_visitors_on_invitor_id", using: :btree
+    t.index ["visitor_id"], name: "index_building_visitors_on_visitor_id", using: :btree
+  end
+
   create_table "buildings", force: :cascade do |t|
     t.integer  "price_per_sqm"
     t.string   "name"
@@ -87,6 +99,10 @@ ActiveRecord::Schema.define(version: 20190101111010) do
     t.integer  "base_count"
     t.datetime "created_at",                       null: false
     t.datetime "updated_at",                       null: false
+    t.string   "district"
+    t.string   "cover_link"
+    t.string   "phone"
+    t.datetime "deleted_at"
   end
 
   create_table "images", force: :cascade do |t|
@@ -98,6 +114,7 @@ ActiveRecord::Schema.define(version: 20190101111010) do
     t.datetime "file_updated_at"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
+    t.string   "special_type"
     t.index ["owner_type", "owner_id"], name: "index_images_on_owner_type_and_owner_id", using: :btree
   end
 
@@ -115,6 +132,7 @@ ActiveRecord::Schema.define(version: 20190101111010) do
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
     t.integer  "base_number",        default: 0
+    t.integer  "read_number",        default: 0
   end
 
   create_table "page_items", force: :cascade do |t|
@@ -177,5 +195,7 @@ ActiveRecord::Schema.define(version: 20190101111010) do
     t.datetime "updated_at",                        null: false
   end
 
+  add_foreign_key "building_visitors", "buildings"
+  add_foreign_key "building_visitors", "users", column: "visitor_id"
   add_foreign_key "sessions", "users"
 end
