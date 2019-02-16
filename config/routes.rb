@@ -40,5 +40,6 @@ Rails.application.routes.draw do
     resources :advisers, only: [:index, :show]
     resources :sessions, only: [:create]
     resource :weapp_settings, only: [:show]
+    resource :fetch_user_wechat_mobile, only: [:create]
   end
 end
