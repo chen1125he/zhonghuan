@@ -19,6 +19,7 @@
 #
 
 class Image < ApplicationRecord
+  default_scope -> { where(special_type: nil) }
   belongs_to :owner, polymorphic: true, optional: true, touch: true
 
   has_attached_file :file, {
