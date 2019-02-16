@@ -16,8 +16,8 @@ wb.add_worksheet(name: '用户列表') do |sheet|
 
     new_row = [
       user.uid,
-      user.raw.try('[]', :nickName),
-      user.raw.try('[]', :phone).presence || '-',
+      user.raw[:nickName],
+      user.raw[:phone].presence || '-',
       address,
       0,
       0,
