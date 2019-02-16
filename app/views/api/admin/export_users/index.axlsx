@@ -1,15 +1,14 @@
 wb = xlsx_package.workbook
 wb.add_worksheet(name: '用户列表') do |sheet|
-  sheet.add_row %w(
+   title = %w(
     openID
     微信名
     手机号
     地址
     总关注数
-    楼盘一
-    楼盘二
-    楼盘三
   )
+  title += Building.all.order(created_at: :desc).pluck(:name)
+  sheet.add_row
 
   @users.each do |user|
     address = "#{user.raw['province']}-#{user.raw['city']}"
@@ -19,11 +18,12 @@ wb.add_worksheet(name: '用户列表') do |sheet|
       user.raw['nickName'],
       user.raw['phone'].presence || '-',
       address,
-      0,
-      0,
-      0,
-      0
+      user.building_visitors.count
     ]
+    
+    Building.all.order(created_at: :desc).each do |building|
+      new_row << user.building_visitors.where(building: building).count
+    end
 
     sheet.add_row(
       new_row,

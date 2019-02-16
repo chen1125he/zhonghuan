@@ -1,5 +1,6 @@
 {
   id: user.id,
   openid: user.uid,
-  raw: user.raw
+  raw: user.raw,
+  visitor_count: user.building_visitors.count
 }
