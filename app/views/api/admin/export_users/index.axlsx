@@ -12,12 +12,12 @@ wb.add_worksheet(name: '用户列表') do |sheet|
   )
 
   @users.each do |user|
-    address = "#{user.raw.try('[]', :province)}-#{user.raw.try('[]', :city)}"
+    address = "#{user.raw['province']}-#{user.raw['city']}"
 
     new_row = [
       user.uid,
-      user.raw[:nickName],
-      user.raw[:phone].presence || '-',
+      user.raw['nickName'],
+      user.raw['phone'].presence || '-',
       address,
       0,
       0,
