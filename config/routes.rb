@@ -7,7 +7,6 @@ Rails.application.routes.draw do
       get 'iflogin', to: 'sessions#show'
       delete 'logout', to: 'sessions#destroy'
 
-      resources :users
       resources :pages, only: [:index, :show, :create, :update, :destroy]
       resources :sliders, only: [:index, :show, :create, :update, :destroy]
       resources :informations, only: [:index, :show, :create, :update, :destroy]
