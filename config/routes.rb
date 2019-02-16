@@ -7,7 +7,6 @@ Rails.application.routes.draw do
       get 'iflogin', to: 'sessions#show'
       delete 'logout', to: 'sessions#destroy'
 
-      resources :users
       resources :pages, only: [:index, :show, :create, :update, :destroy]
       resources :sliders, only: [:index, :show, :create, :update, :destroy]
       resources :informations, only: [:index, :show, :create, :update, :destroy]
@@ -40,5 +39,6 @@ Rails.application.routes.draw do
     resources :advisers, only: [:index, :show]
     resources :sessions, only: [:create]
     resource :weapp_settings, only: [:show]
+    resource :fetch_user_wechat_mobile, only: [:create]
   end
 end

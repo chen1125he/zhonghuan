@@ -14,4 +14,5 @@ class User < ApplicationRecord
   include UserAuthenticatable
 
   has_many :sessions
+  has_many :building_visitors, foreign_key: :invitor_id
 end
