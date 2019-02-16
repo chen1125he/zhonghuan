@@ -21,7 +21,7 @@
 class Image < ApplicationRecord
   belongs_to :owner, polymorphic: true, optional: true, touch: true
 
-  has_attached_file :file
+  has_attached_file :file, path: ':rails_root/public/uploads/:class/:attachment/:id_partition/:style/:filename'
   validates_attachment_content_type :file, content_type: /\Aimage\/.*\z/
   validates :file, attachment_presence: true
 end
