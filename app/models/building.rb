@@ -33,7 +33,7 @@ class Building < ApplicationRecord
   include SoftDeletable
   include GeographicalAddress
 
-  has_one :cover, as: :owner, class_name: 'Image'
+  has_one :cover, -> { where(special_type: nil) }, as: :owner, class_name: 'Image'
   has_one :poster, -> { where(special_type: 'BuildingPoster') }, as: :owner, class_name: 'Image'
   has_many :building_displays, dependent: :destroy
   has_one :building_description, dependent: :destroy

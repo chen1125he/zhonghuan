@@ -10,7 +10,7 @@
 #
 
 class WeappSetting < ApplicationRecord
-  has_one :share_picture, as: :owner, class_name: 'Image', dependent: :destroy
+  has_one :share_picture, -> { where(special_type: nil) }, as: :owner, class_name: 'Image', dependent: :destroy
   accepts_nested_attributes_for :share_picture, allow_destroy: true
 
   def share_picture_attributes=(attributes)
