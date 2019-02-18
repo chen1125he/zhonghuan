@@ -1,6 +1,6 @@
 class API::InformationsController < API::BaseController
   before_action :load_information, only: [:show]
-  after_action :increment_read_number, only: [:show]
+  after_action :increase_read_number, only: [:show]
 
   def index
     @informations = Information.page(params[:page]).per(params[:per])

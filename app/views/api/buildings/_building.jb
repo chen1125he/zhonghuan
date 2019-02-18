@@ -25,7 +25,7 @@
   poster: render('api/images/image', image: building.poster),
   building_displays: render(partial: 'api/building_displays/building_display', collection: building.building_displays, as: :building_display),
   building_description: render('api/building_descriptions/building_description', building_description: building.building_description),
-  advisers: render(partial: 'api/advisers/adviser', collection: building.advisers, as: :adviser),
+  advisers: render(partial: 'api/advisers/adviser', collection: building.advisers.order(created_at: :asc), as: :adviser),
   building_visitors: render(partial: 'api/users/user', collection: building.without_invitor_building_visitors.limit(10).map(&:visitor), as: :user),
   building_visitor_count: building.without_invitor_building_visitors.count,
   my_building_visitors: render(partial: 'api/users/user', collection: building.building_visitors.where(invitor: current_user).limit(10).map(&:visitor), as: :user),
