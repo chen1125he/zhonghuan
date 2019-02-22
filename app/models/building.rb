@@ -40,6 +40,8 @@ class Building < ApplicationRecord
   has_many :advisers, dependent: :nullify
   has_many :building_visitors, -> { order('building_visitors.created_at DESC') }, dependent: :destroy
   has_many :without_invitor_building_visitors, -> { where('building_visitors.invitor_id' => nil).order('building_visitors.created_at DESC') }, class_name: 'BuildingVisitor'
+  has_many :assigned_building_visitors, -> { joins('INNER JOIN users ON users.id = building_visitors.visitor_id').where('users.assigned' => true).order('building_visitors.created_at DESC') }, dependent: :destroy, class_name: 'BuildingVisitor'
+  has_many :assigned_without_invitor_building_visitors, -> { joins('INNER JOIN users ON users.id = building_visitors.visitor_id').where('users.assigned' => true).where('building_visitors.invitor_id' => nil).order('building_visitors.created_at DESC') }, class_name: 'BuildingVisitor'
 
   validates :name, presence: true
   validates :cover, presence: true
