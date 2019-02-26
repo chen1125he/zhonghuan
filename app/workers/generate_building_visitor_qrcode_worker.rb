@@ -20,7 +20,7 @@ class GenerateBuildingVisitorQrcodeWorker
   private
 
   def wx_getwxacode(building_visitor)
-    payload = { path: "pages/propertyDetail/propertyDetail?userId=#{building_visitor.visitor_id}&buildingId=#{building_visitor.building_id}" }
+    payload = { page: "pages/propertyDetail/propertyDetail", user_id: building_visitor.visitor_id, building_id: building_visitor.building_id }
     WxAPI.qrcode.user_building_qrocde(payload)
   end
 end
