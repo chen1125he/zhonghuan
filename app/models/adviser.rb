@@ -17,14 +17,13 @@
 #
 
 class Adviser < ApplicationRecord
-  has_one :avatar, as: :owner, class_name: 'Image', dependent: :destroy
+  has_one :avatar, -> { where(special_type: nil) }, as: :owner, class_name: 'Image', dependent: :destroy
   belongs_to :building
 
   accepts_nested_attributes_for :avatar, allow_destroy: true
 
   validates :avatar, presence: true
   validates :level, inclusion: 1..5, numericality: { only_integer: true }
-  validates :mobile, presence: true, format: { with: /\A1\d{10}\z/ }
 
   def avatar_attributes=(attributes)
     image = Image.find(attributes[:id])

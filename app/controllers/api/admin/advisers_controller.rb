@@ -2,7 +2,7 @@ class API::Admin::AdvisersController < API::Admin::BaseController
   before_action :load_adviser, only: [:show, :update, :destroy]
 
   def index
-    @advisers = Adviser.page(params[:page]).per(params[:per])
+    @advisers = Adviser.order(created_at: :desc).page(params[:page]).per(params[:per])
   end
 
   def show

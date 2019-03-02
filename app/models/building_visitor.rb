@@ -24,10 +24,10 @@
 
 class BuildingVisitor < ApplicationRecord
   include SoftDeletable
-  
+
   belongs_to :building
   belongs_to :invitor, class_name: 'User', optional: true
   belongs_to :visitor, class_name: 'User'
 
-  has_one :qrcode, as: :owner, class_name: 'Image', dependent: :destroy
+  has_one :qrcode, -> { where(special_type: nil) }, as: :owner, class_name: 'Image', dependent: :destroy
 end

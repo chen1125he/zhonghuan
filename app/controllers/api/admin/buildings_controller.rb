@@ -2,7 +2,7 @@ class API::Admin::BuildingsController < API::Admin::BaseController
   before_action :load_building, only: [:show, :update, :destroy]
 
   def index
-    @buildings = Building.page(params[:page]).per(params[:per])
+    @buildings = Building.order(created_at: :desc).page(params[:page]).per(params[:per])
   end
 
   def show
@@ -60,6 +60,7 @@ class API::Admin::BuildingsController < API::Admin::BaseController
       tags: [],
       cover_attributes: [:id, :_destroy],
       poster_attributes: [:id, :_destroy],
+      map_attributes: [:id, :_destroy],
       building_displays_attributes: [
         :id,
         :name,

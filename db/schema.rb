@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190215033006) do
+ActiveRecord::Schema.define(version: 20190222101034) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -181,11 +181,12 @@ ActiveRecord::Schema.define(version: 20190215033006) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "uid",                     comment: "微信用户的openid"
-    t.json     "raw",                     comment: "原始认证信息"
-    t.string   "name",                    comment: "昵称"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "uid",                                     comment: "微信用户的openid"
+    t.json     "raw",                                     comment: "原始认证信息"
+    t.string   "name",                                    comment: "昵称"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.boolean  "assigned",   default: false,              comment: "是否已经授权个人信息"
   end
 
   create_table "weapp_settings", force: :cascade do |t|

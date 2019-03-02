@@ -33,7 +33,7 @@ class Information < ApplicationRecord
   validates :public_at, presence: true
   # validates :image, attachment_presence: true
 
-  has_one :image, as: :owner, class_name: 'Image', dependent: :destroy
+  has_one :image, -> { where(special_type: nil) }, as: :owner, class_name: 'Image', dependent: :destroy
   accepts_nested_attributes_for :image, allow_destroy: true
 
   def image_attributes=(attributes)

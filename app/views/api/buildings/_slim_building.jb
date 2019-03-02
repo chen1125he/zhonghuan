@@ -22,6 +22,7 @@
   tags: building.tags,
   cover: render('api/images/image', image: building.cover),
   poster: render('api/images/image', image: building.poster),
+  map: render('api/images/image', image: building.map),
   building_displays: render(partial: 'api/building_displays/building_display', collection: building.building_displays, as: :building_display),
   building_description: render('api/building_descriptions/building_description', building_description: building.building_description)
 }

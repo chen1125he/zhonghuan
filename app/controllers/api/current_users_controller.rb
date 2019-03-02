@@ -4,6 +4,7 @@ class API::CurrentUsersController < API::BaseController
 
   def update
     current_user.update(raw: raw_params)
+    current_user.update(assigned: true) if current_user.raw['avatarUrl'].present?
   end
 
   private

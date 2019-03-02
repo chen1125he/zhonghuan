@@ -4,7 +4,7 @@ class API::BuildingsController < API::BaseController
   before_action :add_visitor, only: [:show]
 
   def index
-    @buildings = Building.page(params[:page]).per(params[:per])
+    @buildings = Building.order(created_at: :asc).page(params[:page]).per(params[:per])
   end
 
   def show
