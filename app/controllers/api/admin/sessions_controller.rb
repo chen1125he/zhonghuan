@@ -1,5 +1,5 @@
 class API::Admin::SessionsController < API::Admin::BaseController
-  skip_before_action :ensure_authenticated_admin, only: [:create]
+  # skip_before_action :ensure_authenticated_admin, only: [:create]
 
   def create
     admin = ::Admin.find_by(name: params[:name])
