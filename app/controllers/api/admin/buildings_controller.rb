@@ -60,6 +60,7 @@ class API::Admin::BuildingsController < API::Admin::BaseController
       tags: [],
       cover_attributes: [:id, :_destroy],
       poster_attributes: [:id, :_destroy],
+      map_attributes: [:id, :_destroy],
       building_displays_attributes: [
         :id,
         :name,

@@ -35,6 +35,7 @@ class Building < ApplicationRecord
 
   has_one :cover, -> { where(special_type: nil) }, as: :owner, class_name: 'Image'
   has_one :poster, -> { where(special_type: 'BuildingPoster') }, as: :owner, class_name: 'Image'
+  has_one :map, -> { where(special_type: 'BuildingMap') }, as: :owner, class_name: 'Image'
   has_many :building_displays, dependent: :destroy
   has_one :building_description, dependent: :destroy
   has_many :advisers, dependent: :nullify
@@ -46,9 +47,11 @@ class Building < ApplicationRecord
   validates :name, presence: true
   validates :cover, presence: true
   validates :poster, presence: true
+  validates :map, presence: true
 
   accepts_nested_attributes_for :cover, allow_destroy: true
   accepts_nested_attributes_for :poster, allow_destroy: true
+  accepts_nested_attributes_for :map, allow_destroy: true
   accepts_nested_attributes_for :building_displays, allow_destroy: true
   accepts_nested_attributes_for :building_description, allow_destroy: true
 
@@ -64,6 +67,13 @@ class Building < ApplicationRecord
     image = Image.find(attributes[:id])
     image.special_type = 'BuildingPoster'
     self.poster = image # Preferably finding posts should be scoped
+    super(attributes)
+  end
+
+  def map_attributes=(attributes)
+    image = Image.find(attributes[:id])
+    image.special_type = 'BuildingMap'
+    self.map = image # Preferably finding posts should be scoped
     super(attributes)
   end
 end
