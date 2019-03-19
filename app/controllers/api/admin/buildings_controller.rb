@@ -55,6 +55,7 @@ class API::Admin::BuildingsController < API::Admin::BaseController
       :green_rate,
       :plot_ratio,
       :property_fee_desc,
+      :disclaimer,
       :base_count,
       :cover_link,
       tags: [],

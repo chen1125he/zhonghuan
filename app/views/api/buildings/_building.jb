@@ -17,6 +17,7 @@
   price_per_sqm: building.price_per_sqm,
   property_company: building.property_company,
   property_fee_desc: building.property_fee_desc,
+  disclaimer: building.disclaimer,
   property_type: building.property_type,
   property_year: building.property_year,
   cover_link: building.cover_link,
